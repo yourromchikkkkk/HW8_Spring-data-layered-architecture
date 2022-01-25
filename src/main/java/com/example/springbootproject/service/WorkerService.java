@@ -4,6 +4,7 @@ package com.example.springbootproject.service;
 import com.example.springbootproject.entity.Worker;
 import com.example.springbootproject.entity.WorkerInfo;
 import com.example.springbootproject.logger.Logger;
+import com.example.springbootproject.repository.WorkerInfoRepository;
 import com.example.springbootproject.repository.WorkerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class WorkerService {
 
     @Autowired
     DepartureService departureService;
+
+    @Autowired
+    WorkerInfoRepository workerInfoRepository;
 
     public Worker getById(int id) {
         Worker worker = workerRepository.findWorkerById(id);
@@ -65,8 +69,10 @@ public class WorkerService {
 
     public Worker setWorkerInfo(int id, WorkerInfo workerInfo) {
         Worker returnWorker = getById(id);
+        returnWorker.setId(id);
         if (!Objects.isNull(returnWorker)) {
             returnWorker.setWorkerInfo(workerInfo);
+            workerInfoRepository.save(workerInfo);
             return updateWorker(returnWorker);
         } else {
             return null;
