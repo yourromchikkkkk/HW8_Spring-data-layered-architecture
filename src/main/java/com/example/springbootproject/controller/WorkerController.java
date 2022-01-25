@@ -92,8 +92,9 @@ public class WorkerController {
         }
     }
 
-    @PutMapping("/workers/{id}/info")
-    public ResponseEntity<Worker> updateWorkerInfo(@PathVariable int id, @RequestBody WorkerInfo workerInfo) {
-        return setWorkerInfo(id, workerInfo);
-    }
+    //не працюэ коректно, як би хотілось
+//    @PutMapping("/workers/{id}/info")
+//    public ResponseEntity<Worker> updateWorkerInfo(@PathVariable int id, @RequestBody WorkerInfo workerInfo) {
+//        return updateWorkerInfo(id, workerInfo);
+//    }
 }

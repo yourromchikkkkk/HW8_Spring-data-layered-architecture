@@ -78,4 +78,18 @@ public class WorkerService {
             return null;
         }
     }
+
+    public Worker updateWorkerInfo(int id, WorkerInfo workerInfo) {
+        WorkerInfo returnWorkerInfo = getById(id).getWorkerInfo();
+        returnWorkerInfo.setAge(workerInfo.getAge());
+        returnWorkerInfo.setHomeAdress(workerInfo.getHomeAdress());
+        if (!Objects.isNull(returnWorkerInfo)) {
+            Worker returnWorker = getById(id);
+            returnWorker.setWorkerInfo(returnWorkerInfo);
+            workerInfoRepository.save(returnWorkerInfo);
+            return workerRepository.save(returnWorker);
+        } else {
+            return null;
+        }
+    }
 }
