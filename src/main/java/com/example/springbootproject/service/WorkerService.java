@@ -67,7 +67,7 @@ public class WorkerService {
         Worker returnWorker = getById(id);
         if (!Objects.isNull(returnWorker)) {
             returnWorker.setWorkerInfo(workerInfo);
-            return workerRepository.save(returnWorker);
+            return updateWorker(returnWorker);
         } else {
             return null;
         }
