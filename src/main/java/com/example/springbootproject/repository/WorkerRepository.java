@@ -11,8 +11,10 @@ import java.util.List;
 @Repository
 public interface WorkerRepository extends JpaRepository<Worker, Integer> {
 
-    @Query("select w from Worker as w where w.departure.id = :departureId and w.name in :list ")
-    List<Worker> findAllByDepartureId(@Param("departureId") int departureId);
+//    @Query("select w from Worker as w where w.departure.id = :departureId and w.name in :list ")
+//    List<Worker> findAllByDepartureId(@Param("departureId") int departureId);
+
+    List<Worker> findAllByDepartureId(int departureId);
 
     Worker findWorkerById(int id);
 
